@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StockDetails"
+    android:background="@color/navbarColor">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/navbarColor"
+        android:elevation="12dp"
+        android:outlineSpotShadowColor="@color/black"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/star_border"
+        tools:ignore="MissingConstraints" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/progressBar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/stockScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <LinearLayout
+            android:id="@+id/stockScrollLL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="@+id/stockScrollView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:layout_weight="0.22"
+                    android:padding="6dp"/>
+
+                <TableLayout
+                    android:id="@+id/tableStockDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.78">
+
+                    <!-- First row -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <!-- First column -->
+                        <TextView
+                            android:id="@+id/r0c0SD"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="8dp"
+                            android:paddingTop="10dp"
+                            android:layout_marginBottom="2dp"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <!-- Second column -->
+                        <TextView
+                            android:id="@+id/r0c1SD"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginBottom="2dp"
+                            android:paddingTop="10dp"
+                            android:paddingEnd="8dp"
+                            android:textColor="@color/black"
+                            android:textAlignment="viewEnd"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <!-- Second row -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- First column -->
+                        <TextView
+                            android:id="@+id/r1c0SD"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="8dp"
+                            android:layout_marginBottom="2dp"
+                            android:textColor="@color/material_dynamic_neutral_variant50"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                        <!-- Second column -->
+                        <TextView
+                            android:id="@+id/r1c1SD"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_marginBottom="2dp"
+                            android:paddingEnd="6dp"
+                            android:drawablePadding="6dp"
+                            android:textStyle="bold"
+                            app:drawableLeftCompat="@drawable/trending_up" />
+                    </TableRow>
+
+                </TableLayout>
+
+            </LinearLayout>
+
+<!--            <androidx.viewpager2.widget.ViewPager2-->
+<!--                android:id="@+id/viewPager"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="500dp" />-->
+            <WebView
+                android:id="@+id/mainChart"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"/>
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabChartSec"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/navbarColor"
+                app:tabIconTint="@color/chartIconAndTab"
+                app:tabIndicatorColor="#0404fc"
+                app:tabIndicatorFullWidth="true">
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/hourChartTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:icon="@drawable/chart_hour" />
+
+
+                <com.google.android.material.tabs.TabItem
+                    android:id="@+id/histChartTab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:icon="@drawable/chart_historical_inactive" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <include layout="@layout/portfolio_sec" />
+
+            <include layout="@layout/stats_sec" />
+
+            <include layout="@layout/about" />
+
+            <include layout="@layout/insights_sec" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/news"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="22sp"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/newsRecView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/firstDiv"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="65dp"/>
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

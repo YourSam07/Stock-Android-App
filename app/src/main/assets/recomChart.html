@@ -1,0 +1,113 @@
+<!-- chart1.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chart 1</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+
+<body>
+<div id="container" style="width:100%; height:100%;"></div>
+<script>
+    recomChartData = []
+
+    const ticker = ChartData.getTicker();
+    // const ticker = "AAPL";
+
+    const getInsightsData = () => {
+      axios.get(`https://webtech-assign-3.wl.r.appspot.com/recom/${ticker}`)
+        .then((res) => {
+          recomChartData = res.data
+          showChart(ticker, recomChartData)
+        })
+        .catch((err) => [
+          console.log(err)
+        ])
+    }
+
+    getInsightsData();
+
+    const showChart = (ticker, recomChartData) => {
+      console.log("inside show chart", ticker, recomChartData)
+
+      Highcharts.chart('container', {
+        chart: {
+          type: 'column',
+          backgroundColor: '#f8f8f8',
+          //   width : 340
+        },
+        rules: [{
+          condition: {
+            maxWidth: 500
+          }
+        }],
+        title: {
+          text: 'Recommendation Trends',
+          align: 'center'
+        },
+        xAxis: {
+          categories: recomChartData && [recomChartData[0].period, recomChartData[1].period, recomChartData[2].period, recomChartData[3].period]
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: '#Analysis'
+          },
+          stackLabels: {
+            enabled: true
+          }
+        },
+        legend: {
+          align: 'center',
+          floating: false,
+          backgroundColor: '#f8f8f8',
+          borderColor: '#CCC',
+          borderWidth: 1,
+          shadow: false
+        },
+        tooltip: {
+          headerFormat: '<b>{point.x}</b><br/>',
+          pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            dataLabels: {
+              enabled: true
+            }
+          }
+        },
+        series: [{
+          name: 'Strong Buy',
+          data: recomChartData && [recomChartData[0].strongBuy, recomChartData[1].strongBuy, recomChartData[2].strongBuy, recomChartData[3].strongBuy],
+          color: '#1a6334'
+        }, {
+          name: 'Buy',
+          data: recomChartData && [recomChartData[0].buy, recomChartData[1].buy, recomChartData[2].buy, recomChartData[3].buy],
+          color: '#24af50'
+        }, {
+          name: 'Hold',
+          data: recomChartData && [recomChartData[0].hold, recomChartData[1].hold, recomChartData[2].hold, recomChartData[3].hold],
+          color: '#b07e28'
+        }, {
+          name: 'Sell',
+          data: recomChartData && [recomChartData[0].sell, recomChartData[1].sell, recomChartData[2].sell, recomChartData[3].sell],
+          color: '#f15053'
+        }, {
+          name: 'Strong Sell',
+          data: recomChartData && [recomChartData[0].strongSell, recomChartData[1].strongSell, recomChartData[2].strongSell, recomChartData[3].strongSell],
+          color: '#752b2c'
+        }]
+      })
+    }
+
+</script>
+</body>
+
+</html>

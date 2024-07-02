@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="navbarColor">#FFFCFC</color>
+    <color name="grayHome">#e8e4e4</color>
+    <color name="success">#359c5d</color>
+    <color name="error">#Cd2134</color>
+    <color name="delete">#f03404</color>
+    <color name="src">#858584</color>
+    <color name="date">#a4a4a4</color>
+    <color name="chartIconAndTab">#0404fc</color>
+    <color name="tableItem">#f2f1f2</color>
+    <color name="toastCard">#f2f2f2</color>
+    <color name="progressBar">#5b23b0</color>
+</resources>

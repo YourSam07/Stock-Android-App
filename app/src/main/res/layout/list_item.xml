@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:orientation="vertical"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:orientation="horizontal">
+
+        <TableLayout
+            android:id="@+id/tableListItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.95">
+
+            <!-- First row -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <!-- First column -->
+                <TextView
+                    android:id="@+id/r0c0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:text="@string/net_worth"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- Second column -->
+                <TextView
+                    android:id="@+id/r0c1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:text="@string/cash_balance"
+                    android:textAlignment="viewEnd"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <!-- Second row -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- First column -->
+                <TextView
+                    android:id="@+id/r1c0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:textColor="@color/material_dynamic_neutral_variant50"
+                    android:textSize="18sp" />
+
+                <!-- Second column -->
+                <TextView
+                    android:id="@+id/r1c1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:drawablePadding="12dp"
+                    app:drawableLeftCompat="@drawable/trending_up" />
+            </TableRow>
+
+        </TableLayout>
+
+        <ImageView
+            android:id="@+id/rightArrowIcon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.05"
+            android:src="@drawable/right_arrow"
+            android:scaleType="fitCenter"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/grayHome"/>
+
+</LinearLayout>

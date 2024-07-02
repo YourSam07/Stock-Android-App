@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- Set the background color to fully transparent -->
+    <solid android:color="#00000000" />
+    <!-- Optionally, define other properties such as stroke and corner radius -->
+</shape>

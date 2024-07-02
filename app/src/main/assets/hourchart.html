@@ -1,0 +1,127 @@
+<!-- chart1.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chart 1</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+<div id="container" style="width:100%; height:100vh;"></div>
+<script>
+
+    const ticker = ChartData.getTicker();
+    const todt = ChartData.getTodt();
+    const dp = ChartData.getDp();
+    //const ticker = "AAPL";
+    //const todt = 1714507201000;
+    dataForChart = [];
+
+    const getChartData = async () => {
+      try {
+        const isMarketOpen = await axios.get("https://webtech-assign-3.wl.r.appspot.com/marketstat")
+        // console.log(isMarketOpen.data)
+        if (isMarketOpen.data) {
+          const apiRes = await axios.get(`https://webtech-assign-3.wl.r.appspot.com/pricevar/${ticker}`)
+
+          apiRes.data?.results?.map((item) => {
+            dataForChart.push([(item?.t), item?.o])
+          })
+
+          console.log("chartdata", dataForChart)
+          showChart(ticker, dataForChart)
+
+        } else {
+
+          console.log("inside else")
+          const apiRes = await axios.get(`https://webtech-assign-3.wl.r.appspot.com/pricevar/${ticker}?todt=${todt}`)
+          let dataForChart = []
+
+          apiRes.data.results.map((item) => {
+            dataForChart.push([(item?.t), item?.o])
+          })
+
+          showChart(ticker, dataForChart)
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    getChartData();
+    const showChart = (ticker, data) => {
+      console.log("inside show chart", data, ticker)
+      Highcharts.chart('container', {
+      title: {
+        text: `${ticker} Hourly Price Variation`
+      },
+
+      chart: {
+        backgroundColor: '#f8f9fa',
+      },
+
+      plotOptions: {
+        series: {
+          marker: {
+            enabled: false, // Disable the dots on the line representing prices
+          },
+          color: dp > 0 ? "#198754" : "#dc3545", // Default line color
+        },
+      },
+
+      xAxis: {
+        type: 'datetime',
+        // startOnTick: true,
+        // endOnTick: true,
+        // min: startPoint,
+        title: {
+          text: null, // No label for the y-axis
+        },
+        labels: {
+          formatter: function () {
+            return Highcharts.dateFormat('%H:%M', this.value);
+          },
+        },
+        tickInterval: 3 * 3600 * 1000,
+      },
+
+      yAxis: [{
+        title: {
+          text: null, // No label for the y-axis
+        },
+        tickAmount: 6,
+        opposite: true,
+        labels: {
+          x: -20,
+          y: -5
+        }
+      }],
+
+      legend: {
+        enabled: false
+      },
+
+      tooltip: {
+        formatter: function () {
+          return `<b>${Highcharts.dateFormat('%H:%M', this.x)}</b><br/>Price: ${this.y}`;
+        },
+      },
+
+      series: [{
+        data: data,
+        type: "line",
+        tooltip: {
+          valueDecimals: 2
+        },
+        pointInterval: 3 * 3600 * 1000,
+      }]
+    });
+    }
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Stock Search</string>
+    <string name="toolbarTitle">Stocks</string>
+    <string name="favs">FAVORITES</string>
+    <string name="portfolio">PORTFOLIO</string>
+    <string name="net_worth">Net Worth</string>
+    <string name="cash_balance">Cash Balance</string>
+    <string name="finn">Powered by Finnhub</string>
+    <string name="appIconContent">Launcher app icon</string>
+    <string name="search">Search</string>
+    <string name="trade">Trade</string>
+    <string name="row1c0">Shares Owned:</string>
+    <string name="row2c0">Avg. Cost/Share:</string>
+    <string name="row3c0">Total Cost:</string>
+    <string name="row4c0">Change:</string>
+    <string name="row5c0">Market Value:</string>
+    <string name="stats">Stats</string>
+    <string name="about">About</string>
+    <string name="ipo">IPO Start Date</string>
+    <string name="indus">Industry</string>
+    <string name="webpage">Webpage</string>
+    <string name="peers">Company Peers</string>
+    <string name="insights">Insights</string>
+    <string name="mspr">MSPR</string>
+    <string name="change">Change</string>
+    <string name="total">Total</string>
+    <string name="pos">Positive</string>
+    <string name="neg">Negative</string>
+    <string name="ss">Social Sentiments</string>
+    <string name="openPrice">Open Price:</string>
+    <string name="highPrice">High Price:</string>
+    <string name="lowPrice">Low Price:</string>
+    <string name="prevClose">Prev. Close:</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="shares">shares</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="done">Done</string>
+    <string name="news">News</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
